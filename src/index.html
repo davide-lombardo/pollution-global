@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Con questa riga htmlWebpackPlugin sostituisce il titolo del file con quello specificato in webpack.config.js - lo faremo fra poco! -->
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <!-- Questo è un placeholder per favicon.ico, ricordate di metterne uno decente prima di inviare il progetto :P -->
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+        <h1 class="title">Global Air Pollution</h1>
+
+        <div class="search-box">
+            <input type="text" class="loc-input" />
+
+            <button class="send-btn">Search</button>
+        </div>
+
+        <section class="img">
+            <img src="img/background-1.jpg" alt="">
+        </section>
+
+    </div>
+
+
+
+    <script src="bundle.js"></script>
+</body>
+
+</html>

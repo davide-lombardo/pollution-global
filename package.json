@@ -1,0 +1,28 @@
+{
+    "name": "pollution-global",
+    "version": "1.0.0",
+    "description": "My project for start2impact.it: a simple web app that retrieves data from the AQI APIs and displays it.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "webpack serve --mode development",
+        "build": "webpack --mode production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/davide-lombardo/pollution-global.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/davide-lombardo/pollution-global/issues"
+    },
+    "homepage": "https://github.com/davide-lombardo/pollution-global#readme",
+    "devDependencies": {
+        "dotenv-webpack": "^7.0.3",
+        "html-webpack-plugin": "^5.3.2",
+        "webpack": "^5.41.1",
+        "webpack-cli": "^4.7.2",
+        "webpack-dev-server": "^3.11.2"
+    }
+}
