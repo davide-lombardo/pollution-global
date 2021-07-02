@@ -19,10 +19,20 @@
     },
     "homepage": "https://github.com/davide-lombardo/pollution-global#readme",
     "devDependencies": {
+        "css-loader": "^5.2.6",
         "dotenv-webpack": "^7.0.3",
         "html-webpack-plugin": "^5.3.2",
+        "node-sass": "^6.0.1",
+        "postcss-loader": "^6.1.1",
+        "postcss-preset-env": "^6.7.0",
+        "sass-loader": "^12.1.0",
+        "style-loader": "^3.0.0",
         "webpack": "^5.41.1",
         "webpack-cli": "^4.7.2",
         "webpack-dev-server": "^3.11.2"
+    },
+    "dependencies": {
+        "lodash.get": "^4.4.2",
+        "lodash.set": "^4.3.2"
     }
 }

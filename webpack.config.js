@@ -21,6 +21,15 @@ module.exports = (env, argv) => {
             filename: '[name].bundle.js',
             path: path.resolve(__dirname, 'build')
         },
+        module: {
+            rules: [
+                // CSS, PostCSS, and Sass
+                {
+                    test: /\.(scss|css)$/,
+                    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+                },
+            ]
+        },
         // Configurazione di un plugin, necessario per sveltire il processo di sviluppo vedi asterischi nello snippet successivo **
         devServer: {
             contentBase: './build',
@@ -31,6 +40,7 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 title: "Global Air Pollution",
                 template: path.resolve(__dirname, './src/index.html'),
+                filename: "index.html",
             }),
             // Qui dotenv-webpack viene inizializzato
             new Dotenv()

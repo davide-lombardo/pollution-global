@@ -1,5 +1,9 @@
+import './scss/index.scss'
+
+
+
 // le funzioni asincrone si dichiarano aggiungendo async prima dell'espressione
-async function requestPollutionData() {
+(async function requestPollutionData() {
     // la nostra chiave è al sicuro nelle Environment Variables
     const API_KEY = process.env.API_KEY
 
@@ -8,7 +12,12 @@ async function requestPollutionData() {
     const data = await response.json()
 
     console.log(data) // facciamo ciò che vogliamo con i dati ottenuti: scelta, elaborazione, visualizzazione..
-}
+})();
 
-requestPollutionData()
-    // sarebbe meglio una IIFE: https://developer.mozilla.org/en-US/docs/Glossary/IIFE - non l'ho usata per rendere più chiaro il codice
+
+
+const heading = document.createElement('h1');
+heading.textContent = "Global Air Pollution";
+
+const app = document.querySelector('.root');
+app.append(heading);
