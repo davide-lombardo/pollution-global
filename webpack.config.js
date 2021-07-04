@@ -25,9 +25,14 @@ module.exports = (env, argv) => {
             rules: [
                 // CSS, PostCSS, and Sass
                 {
-                    test: /\.(scss|css)$/,
-                    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-                },
+                    test: /\.scss$/,
+                    use: [
+                        'style-loader',
+                        'css-loader',
+                        'postcss-loader',
+                        'sass-loader'
+                    ]
+                }
             ]
         },
         // Configurazione di un plugin, necessario per sveltire il processo di sviluppo vedi asterischi nello snippet successivo **
