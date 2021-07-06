@@ -27,10 +27,6 @@ module.exports = (env, argv) => {
                         'postcss-loader',
                         'sass-loader'
                     ]
-                },
-                {
-                    test: /\.html$/,
-                    use: ["html-loader"]
                 }
             ]
         },
