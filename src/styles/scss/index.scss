@@ -1,6 +1,8 @@
-$font-size: 1rem;
-$font-color:lch(53 105 40);
 @import "~bootstrap/scss/bootstrap";
+$font-size: 1rem;
+$primary-color:#F46708;
+$secondary-color:#009999;
+$font-color:#FFFEE7;
 * {
     box-sizing: border-box;
     padding: 0;
@@ -9,7 +11,7 @@ $font-color:lch(53 105 40);
 
 body {
     width: 100%;
-    background-color: chocolate;
+    background-color: $primary-color;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     line-height: 1.8;
 }
