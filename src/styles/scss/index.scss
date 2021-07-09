@@ -1,5 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
-$font-size: 1rem;
+$font-size: 0.8rem;
 $primary-color:#F46708;
 $secondary-color:#009999;
 $font-color:#FFFEE7;
@@ -11,8 +10,9 @@ $font-color:#FFFEE7;
 
 body {
     width: 100%;
+    height: 520px;
     background-color: $primary-color;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     line-height: 1.8;
 }
 
@@ -24,27 +24,66 @@ h1 {
     color: $font-color;
 }
 
-.search-box {
+#mapid {
     display: flex;
-    justify-content: space-between;
-    background-color: cornsilk;
-    font-size: 20px;
-    margin-top: 10px;
+    justify-content: center;
+    margin: 15px;
+    height: 270px;
+    background-color: $secondary-color;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#form {
+    display: flex;
+    justify-content: center;
+}
+
+#city-input {
+    display: flex;
+    width: 120px;
+    height: 30px;
     padding: 15px;
-    border-radius: 10px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 3px;
 }
 
 .send-btn {
     display: flex;
-    justify-content: space-between;
-    padding: 2px 15px;
-    border-radius: 15px;
-    background: lightgrey;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: $font-size;
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: lightgray;
 }
 
-.img {
+.geo-btn {
     display: flex;
     justify-content: center;
-    padding: 25px;
-    border-radius: 15px;
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: $font-size;
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: lightgray;
+}
+
+.send-btn:hover,
+.geo-btn:hover {
+    background-color: darkgrey;
 }
