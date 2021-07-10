@@ -33,11 +33,15 @@ sendBtn.setAttribute("type", "submit");
 sendBtn.setAttribute("value", "submit");
 sendBtn.setAttribute('class', 'send-btn');
 
+const latSpan = document.createElement('p');
+latSpan.innerHTML = "<p>latitude: <span id='lat'></span><br/>longitude: <span id='lon'></span></p>"
+
 app.append(heading);
 app.append(container);
 form.append(cityInput);
 form.append(sendBtn);
 container.append(geoBtn);
+container.append(latSpan);
 document.getElementsByTagName("body")[0].appendChild(form);
 
 
@@ -62,8 +66,14 @@ const succesCallback = async(position) => {
 
     try {
 
-        const response = await axios.get('https://api.waqi.info/feed/geo:${latitude};${latitude}/?token=${process.env.API_KEY}');
-        console.log(response.data);
+        const response = await axios.get('https://api.waqi.info/feed/geo:${latitude};${longitude}/?token=${process.env.API_KEY}');
+        marker.setLatLng([latitude, longitude]).addTo(mymap);
+        console.log(response);
+
+
+
+        document.getElementById('lat').textContent = latitude.toFixed(2);
+        document.getElementById('lon').textContent = longitude.toFixed(2);
 
 
     } catch (err) {
@@ -72,8 +82,6 @@ const succesCallback = async(position) => {
 
     }
 
-    //Leaflet marker gets lat and lon data
-    marker.setLatLng([latitude, longitude]).addTo(mymap);
 };
 
 
@@ -114,12 +122,14 @@ const getUserLocation = () => {
 const requestPollution = async() => {
 
     const API_KEY = process.env.API_KEY
+    const keyword = document.getElementById('city-input').value;
+
 
     try {
         const response = await axios.get('https://api.waqi.info/search/?keyword=${keyword}&token=${process.env.API_KEY}');
         console.log(response.data);
-        // const responseGetLoadash = _.get(response, 'data.data.city.name', 'not found')
-        // console.log(responseGetLoadash);
+        //const responseGetLoadash = _.get(response, 'data.data.city.name', 'not found')
+        //console.log(responseGetLoadash);
 
     } catch (err) {
 

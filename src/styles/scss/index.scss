@@ -87,3 +87,10 @@ h1 {
 .geo-btn:hover {
     background-color: darkgrey;
 }
+
+#lat,
+#lon,
+p {
+    color: $font-color;
+    font-size: 1rem;
+}
