@@ -1,96 +1,97 @@
-$font-size: 0.8rem;
-$primary-color:#F46708;
-$secondary-color:#009999;
-$font-color:#FFFEE7;
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
+@import './resets';
+@import './variables';
+@import './mixins';
+//
 body {
     width: 100%;
     height: 520px;
     background-color: $primary-color;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     line-height: 1.8;
-}
-
-h1 {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    font-size: 45px;
-    color: $font-color;
+    h1 {
+        @include flexCenter;
+        padding: 20px;
+        font-size: 45px;
+        color: $secondary-color;
+        text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        font-family: Impact, 'Arial Narrow Bold', sans-serif;
+        font-weight: lighter;
+    }
+    .container {
+        @include flexCenter;
+        #response {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.2rem;
+            font-weight: 550;
+            padding: 3rem;
+            margin: 3rem auto 3rem auto;
+            background-color: $secondary-color;
+            color: $font-color;
+            .ico {
+                width: 50vw;
+                display: flex;
+                justify-content: space-between;
+                line-height: 2rem;
+                margin-right: 0.5rem
+            }
+        }
+    }
 }
 
 #mapid {
-    display: flex;
-    justify-content: center;
+    @include flexCenter;
     margin: 15px;
     height: 270px;
     background-color: $secondary-color;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.container {
-    display: flex;
-    justify-content: flex-start;
-}
-
 #form {
-    display: flex;
-    justify-content: center;
-}
-
-#city-input {
-    display: flex;
-    width: 120px;
-    height: 30px;
-    padding: 15px;
-    margin: 10px;
-    border: 2px solid black;
-    border-radius: 3px;
-}
-
-.send-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 40px;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    font-size: $font-size;
-    font-weight: bold;
-    border: 1px solid black;
-    background-color: lightgray;
+    @include flexCenter;
+    #search-bar {
+        @include flexCenter;
+        width: 120px;
+        height: 30px;
+        padding: 15px;
+        margin: 10px;
+        border: 2px solid black;
+        border-radius: 3px;
+    }
+    #send-btn {
+        @include flexCenter;
+        width: 70px;
+        height: 40px;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 5px;
+        font-size: $font-size;
+        font-weight: bold;
+        border: 1px solid black;
+        background-color: $secondary-color;
+        color: $font-color;
+    }
+    #send-btn:hover {
+        background-color: $hover-color;
+        cursor: pointer;
+    }
 }
 
 .geo-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter;
     width: 70px;
     height: 40px;
     padding: 15px;
     margin: 10px;
     border-radius: 5px;
-    font-size: $font-size;
+    font-size: 1.5rem;
     font-weight: bold;
     border: 1px solid black;
-    background-color: lightgray;
-}
-
-.send-btn:hover,
-.geo-btn:hover {
-    background-color: darkgrey;
-}
-
-#lat,
-#lon,
-p {
+    background-color: $secondary-color;
     color: $font-color;
-    font-size: 1rem;
+}
+
+.geo-btn:hover {
+    background-color: $hover-color;
+    cursor: pointer;
 }
