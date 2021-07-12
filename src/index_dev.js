@@ -18,19 +18,19 @@ class Station {
         };
     }
 
-    setVerdict() {
+    setScore() {
 
         const { pm10 } = this.data;
-        let verdict = "";
-        if (pm10 === "N/A") verdict = "Info unavailable";
-        if (pm10 >= 0 && pm10 <= 50) verdict = "Good";
-        if (pm10 >= 51 && pm10 <= 100) verdict = "Moderate";
-        if (pm10 >= 101 && pm10 <= 150) verdict = "Unhealthy for sensitive people";
-        if (pm10 >= 151 && pm <= 200) verdict = "Unhealthy";
-        if (pm10 >= 201 && pm10 <= 300) verdict = "Very unhealthy";
-        if (pm10 >= 301 && pm10 <= 500) verdict = "Hazardous";
+        let score = "";
+        if (pm10 === "N/A") score = "Info unavailable";
+        if (pm10 >= 0 && pm10 <= 50) score = "Good";
+        if (pm10 >= 51 && pm10 <= 100) score = "Moderate";
+        if (pm10 >= 101 && pm10 <= 150) score = "Unhealthy for sensitive people";
+        if (pm10 >= 151 && pm <= 200) score = "Unhealthy";
+        if (pm10 >= 201 && pm10 <= 300) score = "Very unhealthy";
+        if (pm10 >= 301 && pm10 <= 500) score = "Hazardous";
 
-        this.data = {...this.data, verdict };
+        this.data = {...this.data, score };
 
     }
 
@@ -68,11 +68,11 @@ class Station {
 
         }
 
-        this.getResponse(baseUrl);
+        this.getPollutionData(baseUrl);
 
     }
 
-    async getResponse(url) {
+    async getPollutionData(url) {
 
         try {
 
@@ -90,10 +90,14 @@ class Station {
                         `${data.iaqi.co.v} µg/m3 (co2)` : "N/A",
                     no2: data.iaqi.hasOwnProperty("no2") ?
                         `${data.iaqi.no2.v}  µg/m3 (no2)` : "N/A",
+
+
                 };
 
+                console.log(data.city.geo[0]);
+
                 this.setData(newObj);
-                this.setVerdict();
+                this.setScore();
                 this.setDocument();
 
             }
@@ -120,21 +124,21 @@ class Station {
         co2.setAttribute('class', 'ico co2 fas fa-cloud');
         const city = document.createElement('div');
         city.setAttribute('class', 'ico aqi-index-city fas fa-city');
-        const verdict = document.createElement('div');
-        verdict.setAttribute('class', 'ico verdict fas fa-traffic-light');
+        const score = document.createElement('div');
+        score.setAttribute('class', 'ico verdict fas fa-traffic-light');
 
         container.append(responseDiv);
         responseDiv.append(city);
         responseDiv.append(aqi);
         responseDiv.append(co2);
         responseDiv.append(no2);
-        responseDiv.append(verdict);
+        responseDiv.append(score);
 
         city.textContent = this.data.name;
         aqi.textContent = this.data.pm10;
         co2.textContent = this.data.co2;
         no2.textContent = this.data.no2;
-        verdict.textContent = this.data.verdict;
+        score.textContent = this.data.score;
     }
 }
 
@@ -142,34 +146,34 @@ class Station {
 const cityData = new Station();
 
 
-//create a title
+
 const app = document.getElementById('root');
 const heading = document.createElement('h1');
 heading.textContent = "Global Air Pollution";
 
-//create a container
+
 const container = document.createElement('div');
 container.setAttribute('class', 'container');
 
-//create div for leaflet map
+
 const mapDiv = document.createElement('div');
 mapDiv.setAttribute('id', 'mapid');
 
-//create a button for geolocalization
+
 const geoBtn = document.createElement('button');
 geoBtn.setAttribute('class', 'geo-btn fas fa-map-marked-alt');
 
-// create a form dynamically
+
 const form = document.createElement("form");
 form.setAttribute("id", "form");
 
-// create an input element
+
 const searchBar = document.createElement("input");
 searchBar.setAttribute("type", "text");
 searchBar.setAttribute('id', 'search-bar');
 searchBar.setAttribute("placeholder", "Enter city");
 
-// create a submit button
+
 const sendBtn = document.createElement("button");
 sendBtn.setAttribute("type", "submit");
 sendBtn.setAttribute('id', 'send-btn');
@@ -206,6 +210,11 @@ form.addEventListener("submit", (e) => {
 
 
     cityData.manageInput(e, searchBar.value);
+
+    const latitude = data.city.geo[0];
+    const longitude = data.city.geo[1]
+
+    marker.setLatLng([latitude, longitude]).addTo(mymap);
 
 });
 
