@@ -17,10 +17,6 @@ const mapDiv = document.createElement('div');
 mapDiv.setAttribute('id', 'mapid');
 
 
-const geoBtn = document.createElement('button');
-geoBtn.setAttribute('class', 'geo-btn fas fa-map-marked-alt');
-
-
 const form = document.createElement("form");
 form.setAttribute("id", "form");
 
@@ -35,6 +31,9 @@ const sendBtn = document.createElement("button");
 sendBtn.setAttribute("type", "submit");
 sendBtn.setAttribute('id', 'send-btn');
 sendBtn.innerText = 'Submit';
+
+const geoBtn = document.createElement('button');
+geoBtn.setAttribute('class', 'geo-btn fas fa-map-marked-alt');
 
 
 
@@ -145,21 +144,19 @@ class Station {
                     no2: data.iaqi.hasOwnProperty("no2") ?
                         `${data.iaqi.no2.v}  µg/m3 (no2)` : "N/A",
 
+
                 };
 
+                // const latitude = data.city.geo[0];
+                // const longitude = data.city.geo[1];
 
 
-                this.dataValue1 = data.city.geo[0];
-                this.dataValue2 = data.city.geo[1];
-
-                const latitude = this.dataValue1;
-                const longitude = this.dataValue2;
-
-                marker.setLatLng([latitude, longitude]).addTo(mymap);
 
                 this.setData(newObj);
                 this.setScore();
                 this.setDocument();
+
+                return data.city.geo;
 
             }
 
@@ -212,14 +209,18 @@ const cityData = new Station();
 searchBar.focus();
 form.addEventListener("submit", (e) => {
 
-
     cityData.manageInput(e, searchBar.value);
 
+    const { latitude, longitude } = getPollutionData();
+
+
+    marker.setLatLng([latitude, longitude]).addTo(mymap);
 
 });
 
 
 geoBtn.addEventListener("click", (e) => {
+
 
     navigator.geolocation.getCurrentPosition((position) => {
 
