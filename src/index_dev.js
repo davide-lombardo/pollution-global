@@ -45,6 +45,7 @@ form.append(searchBar);
 form.append(sendBtn);
 
 
+
 //create a map with Leaflet
 const mymap = L.map('mapid').setView([0, 0], 2);
 const marker = L.marker([20.7, 90.5]).addTo(mymap);
