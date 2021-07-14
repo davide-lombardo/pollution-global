@@ -36,8 +36,6 @@ const geoBtn = document.createElement('button');
 geoBtn.setAttribute('class', 'geo-btn fas fa-map-marked-alt');
 
 
-
-//append elements to the dom
 app.append(heading);
 app.append(container);
 app.append(mapDiv);
@@ -144,19 +142,16 @@ class Station {
                     no2: data.iaqi.hasOwnProperty("no2") ?
                         `${data.iaqi.no2.v}  µg/m3 (no2)` : "N/A",
 
-
                 };
-
-                // const latitude = data.city.geo[0];
-                // const longitude = data.city.geo[1];
-
-
 
                 this.setData(newObj);
                 this.setScore();
                 this.setDocument();
 
-                return data.city.geo;
+                const latitude = data.city.geo[0];
+                const longitude = data.city.geo[1];
+                //sets a marker at the new station after user input
+                marker.setLatLng([latitude, longitude]).addTo(mymap);
 
             }
 
@@ -173,34 +168,44 @@ class Station {
 
     setDocument() {
 
-        const responseDiv = document.createElement('div');
-        responseDiv.setAttribute('id', 'response')
-        const aqi = document.createElement('div');
-        aqi.setAttribute('class', 'ico aqi-index-text fas fa-tachometer-alt');
-        const no2 = document.createElement('div');
-        no2.setAttribute('class', 'ico no2 fas fa-cloud');
-        const co2 = document.createElement('div');
-        co2.setAttribute('class', 'ico co2 fas fa-cloud');
-        const city = document.createElement('div');
-        city.setAttribute('class', 'ico aqi-index-city fas fa-city');
-        const score = document.createElement('div');
-        score.setAttribute('class', 'ico verdict fas fa-traffic-light');
+        function htmlToElement(html) {
 
-        container.append(responseDiv);
-        responseDiv.append(city);
-        responseDiv.append(aqi);
-        responseDiv.append(co2);
-        responseDiv.append(no2);
-        responseDiv.append(score);
+            let template = document.createElement('template');
+            html = html.trim();
+            template.innerHTML = html;
+            return template.content.firstChild;
+
+        }
+        if (!document.querySelector("#response")) {
+
+            const responseDiv = htmlToElement(
+
+                `<div id="response">
+                <div class="ico aqi-index-city fas fa-city"></div>
+                <div class="ico aqi-index-text fas fa-tachometer-alt"></div>
+                <div class="ico co2 fas fa-cloud"></div>
+                <div class="ico no2 fas fa-cloud"></div>
+                <div class="ico score fas fa-traffic-light"></div>
+              </div>`);
+
+            container.append(responseDiv);
+
+        }
+
+        const aqi = document.querySelector('.aqi-index-text');
+        const city = document.querySelector('.aqi-index-city');
+        const co2 = document.querySelector('.co2');
+        const no2 = document.querySelector('.no2');
+        const score = document.querySelector('.score');
 
         city.textContent = this.data.name;
         aqi.textContent = this.data.pm10;
         co2.textContent = this.data.co2;
         no2.textContent = this.data.no2;
         score.textContent = this.data.score;
+
     }
 }
-
 
 const cityData = new Station();
 
@@ -211,16 +216,10 @@ form.addEventListener("submit", (e) => {
 
     cityData.manageInput(e, searchBar.value);
 
-    const { latitude, longitude } = getPollutionData();
-
-
-    marker.setLatLng([latitude, longitude]).addTo(mymap);
-
 });
 
 
 geoBtn.addEventListener("click", (e) => {
-
 
     navigator.geolocation.getCurrentPosition((position) => {
 
@@ -228,7 +227,7 @@ geoBtn.addEventListener("click", (e) => {
         const longitude = position.coords.longitude;
 
         cityData.manageInput(e, latitude, longitude);
-
+        //sets a marker at the nearest station 
         marker.setLatLng([latitude, longitude]).addTo(mymap);
 
     });

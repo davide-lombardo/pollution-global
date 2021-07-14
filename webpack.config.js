@@ -20,15 +20,13 @@ module.exports = (env, argv) => {
         },
         module: {
             rules: [{
-                    test: /\.scss$/,
-                    use: [
-                        'style-loader',
-                        'css-loader',
-                        'postcss-loader',
-                        'sass-loader'
-                    ]
-                }
-            ]
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            }]
         },
         devServer: {
             contentBase: './build',
