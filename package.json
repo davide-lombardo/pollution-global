@@ -20,7 +20,6 @@
     "homepage": "https://github.com/davide-lombardo/pollution-global#readme",
     "devDependencies": {
         "axios": "^0.21.1",
-        "bootstrap": "^5.0.2",
         "css-loader": "^5.2.6",
         "dotenv-webpack": "^7.0.3",
         "file-loader": "^6.2.0",
@@ -36,6 +35,7 @@
         "webpack-dev-server": "^3.11.2"
     },
     "dependencies": {
-        "clean-webpack-plugin": "^4.0.0-alpha.0"
+        "clean-webpack-plugin": "^4.0.0-alpha.0",
+        "qs": "^6.10.1"
     }
 }
