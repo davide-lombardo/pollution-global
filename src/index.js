@@ -6,4 +6,4 @@ async function callLambdaFunction() {
     console.log(response)
 }
 
-callLambdaFunction()
+callLambdaFunction();

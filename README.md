@@ -25,7 +25,7 @@
    My project for start2impact.it: a simple web app that retrieves data from the AQI APIs and displays it.
     <br />
     <br />
-    <a href="https://aqi-finder.netlify.app/">Live Demo</a>
+    <a href="">Live Demo</a>
     ·
     <a href="https://github.com/davide-lombardo/pollution-global/issues">Report Bug</a>
   </p>
