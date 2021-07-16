@@ -6,14 +6,27 @@ exports.handler = async(url) => {
     try {
 
         const API_KEY = process.env.API_KEY;
-        const lat = url.queryStringParameters.lat;
-        const long = url.queryStringParameters.long;
-        const city = url.queryStringParameters.city;
+        // const lat = url.queryStringParameters.lat;
+        // const long = url.queryStringParameters.long;
+
+        // const city = url.queryStringParameters.city;
+        // const cityNameData = response.data.data[0].station.name;
+        // const cityAqi = response.data.data[0].aqi;
         const response = await axios.get(url);
 
         if (response.data.status === "ok") {
 
             const { data } = await response.data;
+
+            // const data = {
+            //     name: response.data.data.city.name,
+            //     aqi: response.data.data.aqi
+            // };
+
+            // const data = {
+            //     name: cityNameData,
+            //     aqi: cityAqi
+            // };
 
         }
 
