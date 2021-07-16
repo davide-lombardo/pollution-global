@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-exports.handler = async function(event, context) {
+exports.handler = async function(event) {
     const API_KEY = process.env.API_KEY;
     const city = event.queryStringParameters.city;
     const response = await axios.get(`https://api.waqi.info/search/?token=${API_KEY}&keyword=${city}`);

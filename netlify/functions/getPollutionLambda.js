@@ -1,27 +1,34 @@
-manageInput(e, ...args); {
+const axios = require("axios");
 
-    e.preventDefault();
-    let baseUrl = "https://api.waqi.info/feed/";
 
-    if (args.length === 1) {
+exports.handler = async(url) => {
 
-        if (args[0]) {
-            baseUrl += `${args[0]}`;
-            searchBar.value = "";
-            baseUrl += `/?token=${API_KEY}`
-        } else {
-            alert("Please insert a valid value");
+    try {
+
+        const API_KEY = process.env.API_KEY;
+        const lat = url.queryStringParameters.lat;
+        const long = url.queryStringParameters.long;
+        const city = url.queryStringParameters.city;
+        const response = await axios.get(url);
+
+        if (response.data.status === "ok") {
+
+            const { data } = await response.data;
+
         }
 
+        if (response.data.data === "Over quota") alert("Quota limit reached");
+        if (response.data.data === "Invalid key") alert("Invalid API key");
+        if (response.data.data === "Unknown station") alert("The station you entered is unknown, please enter another one.");
+
+    } catch (error) {
+
+        console.error(`${error.name}: ${error.message}`);
+
     }
 
-    if (args.length === 2) {
-
-        baseUrl += `geo:${args[0]};${args[1]}`;
-        baseUrl += `/?token=${API_KEY}`;
-
-    }
-
-    this.callLambdaPollution(baseUrl);
-
+    return {
+        statusCode: 200,
+        body: JSON.stringify(data)
+    };
 }

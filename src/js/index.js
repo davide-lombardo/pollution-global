@@ -1,5 +1,5 @@
 const API_KEY = process.env.API_KEY
-import './styles/scss/index.scss';
+import './scss/index.scss';
 import L from 'leaflet';
 import axios from "axios";
 
@@ -128,7 +128,13 @@ class Station {
 
         try {
 
-            const response = await axios.get(url);
+            const response = await axios.get("/.netlify/functions/getPollutionLambda", {
+                params: {
+                    city: city,
+                    lat: lat,
+                    long: long
+                }
+            });
 
             if (response.data.status === "ok") {
                 const { data } = await response.data;
@@ -228,7 +234,7 @@ geoBtn.addEventListener("click", (e) => {
         const longitude = position.coords.longitude;
 
         cityData.manageInput(e, latitude, longitude);
-        //sets a marker at the nearest station 
+
         marker.setLatLng([latitude, longitude]).addTo(mymap);
 
     });

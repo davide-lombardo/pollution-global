@@ -1,5 +1,5 @@
 const API_KEY = process.env.API_KEY
-import './styles/scss/index.scss';
+import './scss/index.scss';
 import L from 'leaflet';
 import axios from "axios";
 

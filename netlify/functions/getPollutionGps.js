@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-exports.handler = async function(event, context) {
+exports.handler = async function(event) {
     const API_KEY = process.env.API_KEY;
     const lat = event.queryStringParameters.lat;
     const long = event.queryStringParameters.long;
