@@ -12,7 +12,7 @@ exports.handler = async(url) => {
         // const city = url.queryStringParameters.city;
         // const cityNameData = response.data.data[0].station.name;
         // const cityAqi = response.data.data[0].aqi;
-        const response = await axios.get(url);
+        const response = await axios.get(`https://api.waqi.info/feed/geo:${lat};${long}/?token=${API_KEY}`);
 
         if (response.data.status === "ok") {
 
