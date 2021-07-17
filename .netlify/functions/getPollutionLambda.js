@@ -16,12 +16,12 @@ exports.handler = async(url) => {
 
         if (response.data.status === "ok") {
 
-            const { data } = await response.data;
+            // const { data } = await response.data;
 
-            // const data = {
-            //     name: response.data.data.city.name,
-            //     aqi: response.data.data.aqi
-            // };
+            const data = {
+                name: response.data.data.city.name,
+                aqi: response.data.data.aqi
+            };
 
             // const data = {
             //     name: cityNameData,
