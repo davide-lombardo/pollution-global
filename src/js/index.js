@@ -130,7 +130,7 @@ class Station {
 
             const response = await axios.get("/.netlify/functions/getPollutionLambda", {
                 params: {
-                    city: city,
+
                     lat: lat,
                     long: long
                 }

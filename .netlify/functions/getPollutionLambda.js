@@ -6,8 +6,8 @@ exports.handler = async(url) => {
     try {
 
         const API_KEY = process.env.API_KEY;
-        // const lat = url.queryStringParameters.lat;
-        // const long = url.queryStringParameters.long;
+        const lat = url.queryStringParameters.lat;
+        const long = url.queryStringParameters.long;
 
         // const city = url.queryStringParameters.city;
         // const cityNameData = response.data.data[0].station.name;
