@@ -124,7 +124,7 @@ class Station {
 
     }
 
-    async callLambdaPollution(url) {
+    async callLambdaPollution(lat, long) {
 
         try {
 
