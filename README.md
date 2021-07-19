@@ -15,7 +15,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://pollution-global.netlify.app/">
+  <a href="https://pollution-global.netlify.app/" target="_blank">
     <img src="/logo.png" alt="Screenshot">
   </a>
 
@@ -25,7 +25,7 @@
    My project for start2impact.it: a simple web app that retrieves data from the AQI APIs and displays it.
     <br />
     <br />
-    <a href="https://pollution-global.netlify.app/">Live Demo</a>
+    <a href="https://pollution-global.netlify.app/" target="_blank">Live Demo</a>
     ·
     <a href="https://github.com/davide-lombardo/pollution-global/issues">Report Bug</a>
   </p>
