@@ -49,7 +49,7 @@
 
 ## About The Project
 
-[![Website Screenshot][product-screenshot]](https://aqi-finder.netlify.app/)
+[![Website Screenshot][product-screenshot]](https://pollution-global.netlify.app/)
 
 Build an app that allows you to get information about a city's pollution levels.
 
