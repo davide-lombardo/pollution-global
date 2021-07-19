@@ -1,13 +1,13 @@
 import axios from "axios";
 
 
-exports.handler = async(url) => {
+exports.handler = async(event) => {
 
     try {
 
         const API_KEY = process.env.API_KEY;
-        const lat = url.queryStringParameters.lat;
-        const long = url.queryStringParameters.long;
+        const lat = event.queryStringParameters.lat;
+        const long = event.queryStringParameters.long;
 
         // const city = url.queryStringParameters.city;
         // const cityNameData = response.data.data[0].station.name;
