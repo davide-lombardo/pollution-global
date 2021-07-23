@@ -16,7 +16,7 @@
 <br />
 <p align="center">
   <a href="https://pollution-global.netlify.app/" target="_blank">
-    <img src="/logo.png" alt="Screenshot">
+    <img src="./src/img/logo.png" alt="Screenshot">
   </a>
 
   <h3 align="center">Global Pollution</h3>
@@ -111,4 +111,4 @@ start2impact personal page: https://talent.start2impact.it/profile/davide-lombar
 [issues-url]: https://github.com/davide-lombardo/pollution-global/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/davide-lombardo-profile/
-[product-screenshot]: /screenshot.png
+[product-screenshot]: ./src/img/screenshot.png
