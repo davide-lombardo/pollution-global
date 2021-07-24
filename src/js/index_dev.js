@@ -224,7 +224,7 @@ geoBtn.addEventListener("click", (e) => {
         const longitude = position.coords.longitude;
 
         cityData.manageInput(e, latitude, longitude);
-        //sets a marker at the nearest station 
+        
         marker.setLatLng([latitude, longitude]).addTo(mymap);
 
     });
