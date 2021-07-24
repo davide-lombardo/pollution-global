@@ -1,7 +1,8 @@
 const API_KEY = process.env.API_KEY
-import './scss/index.scss';
+import '../scss/index.scss';
 import L from 'leaflet';
-import axios from "axios";
+import axios from 'axios';
+import get from 'lodash/get';
 
 
 const app = document.getElementById('root');
@@ -134,14 +135,11 @@ class Station {
                 const { data } = await response.data;
 
                 const newObj = {
-                    name: data.city.hasOwnProperty("name") ?
-                        data.city.name : "N/A",
-                    pm10: data.iaqi.hasOwnProperty("pm10") ?
-                        data.iaqi.pm10.v : "N/A",
-                    co2: data.iaqi.hasOwnProperty("co") ?
-                        `${data.iaqi.co.v} µg/m3 (co2)` : "N/A",
-                    no2: data.iaqi.hasOwnProperty("no2") ?
-                        `${data.iaqi.no2.v}  µg/m3 (no2)` : "N/A",
+
+                    name: get(data, 'city.name', 'N/A'),
+                    pm10: get(data, 'iaqi.pm10.v', 'N/A'),
+                    co2: get(data, 'iaqi.co.v', 'N/A'),
+                    no2: get(data, 'iaqi.no2.v', 'N/A'),
 
                 };
 
@@ -151,7 +149,7 @@ class Station {
 
                 const latitude = data.city.geo[0];
                 const longitude = data.city.geo[1];
-                //sets a marker at the new station after user input
+                
                 marker.setLatLng([latitude, longitude]).addTo(mymap);
 
             }
@@ -201,16 +199,14 @@ class Station {
 
         city.textContent = this.data.name;
         aqi.textContent = this.data.pm10;
-        co2.textContent = this.data.co2;
-        no2.textContent = this.data.no2;
+        co2.textContent = this.data.co2 + ' µg/m3 (co2)';
+        no2.textContent = this.data.no2 + ' µg/m3 (no2)';;
         score.textContent = this.data.score;
 
     }
 }
 
 const cityData = new Station();
-
-
 
 searchBar.focus();
 form.addEventListener("submit", (e) => {
