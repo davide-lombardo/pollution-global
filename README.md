@@ -40,7 +40,6 @@
     </li>
     <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -90,10 +89,6 @@ API_KEY=YOUR_API_KEY
 Enter the name of the city of which you want to know the level of pollution or simply geolocalize yourself and find the nearest station.
 
 <!-- CONTACT -->
-
-## Contact
-
-Davide Lombardo - davide.lombardo.92@gmail.com
 
 start2impact personal page: https://talent.start2impact.it/profile/davide-lombardo
 
